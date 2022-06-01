@@ -31,14 +31,22 @@ app.get('/',(req, response) =>
 //Cadastro de conta
 app.post('/account',(req,response)=>{
 
-    const{cpf,name} =req.body;
-    const id= uuidv4();//gerar valores aleartorios
 
+const{cpf,name} =req.body;
+const verificarCPF = customers.some((customer)=>customer.cpf==cpf);
+
+
+
+//verificar
+if (verificarCPF) {
+    return response.status(400).json({message:"CPF já cadastrado"} )
+    
+} 
 //salvar elementos em um array
 customers.push(
     {cpf,
     name,
-    id,
+    id:uuidv4(),//gerar valores aleartorios
     statement:[]
 
 }

@@ -24,9 +24,6 @@ app.get('/',(req, response) =>
 });
 
 
- 
-
-
 
 //Cadastro de conta
 app.post('/account',(req,response)=>{
@@ -34,7 +31,6 @@ app.post('/account',(req,response)=>{
 
 const{cpf,name} =req.body;
 const verificarCPF = customers.some((customer)=>customer.cpf==cpf);
-
 
 
 //verificar

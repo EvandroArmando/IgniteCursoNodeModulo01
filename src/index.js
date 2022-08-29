@@ -10,9 +10,23 @@ app.use(express.json())
 //metodo post
 //quatro metodos
 //ver funcionamento API
-
-
 //declaraçao das variaveis
+
+
+
+function verifyIfExistsAccountCPF (request, response, next) {
+ 
+    const { cpf } = request.headers;
+   const customer = customers.find((customer) => customer.cpf = cpf);
+    if (! customer) {
+        return response. status (400).json({error:"Custumer Not Founded"});
+
+
+    }
+    }
+ 
+
+
 
 
 
@@ -20,14 +34,13 @@ const customers= [];
 
 app.get('/',(req, response) =>
 {
-    return response.json({Message:"Hello word Ignite"});
+    return response.json({message:"Hello word Ignite"});
 });
 
 
 
 //Cadastro de conta
 app.post('/account',(req,response)=>{
-
 
 const{cpf,name} =req.body;
 const verificarCPF = customers.some((customer)=>customer.cpf==cpf);
